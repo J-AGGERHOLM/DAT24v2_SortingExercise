@@ -35,25 +35,38 @@ public class SortPeople {
                 new Person("Sixten", "Janson", 53, 1.75),
         };
 
-        System.out.println("Usorteret liste af personer:");
+        System.out.println("Usorteret liste af personer: \n ");
         for (Person person : people) {
             System.out.println(person);
         }
+        System.out.println();
 
 
         // skriv kode herunder
 
-        System.out.println("Sorteret liste af personer:");
+        System.out.println("Sorteret liste af personer, efter alder: \n ");
 
 
         // Convert the array to a list
         List<Person> peopleList = Arrays.asList(people);
 
-        Comparator comparator = new AgeComparator().thenComparing(new NameComparator());
-        Collections.sort(peopleList, comparator);
+        Comparator comparatorAge = new AgeComparator().thenComparing(new NameComparator());
+        Collections.sort(peopleList, comparatorAge);
         for (Person person : people) {
             System.out.println(person);
         }
+        System.out.println();
+
+
+
+
+        System.out.println("Sorteret liste af personer, efter efternavn: \n ");
+        Comparator comparatorName = new NameComparator().thenComparing(new AgeComparator());
+        Collections.sort(peopleList, comparatorName);
+        for (Person person : people) {
+            System.out.println(person);
+        }
+        System.out.println();
 
     }
 
